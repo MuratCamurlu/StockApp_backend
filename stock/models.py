@@ -18,4 +18,10 @@ class Product(models.Model):
     name=models.CharField(max_length=100,unique=True)
     category=models.ForeignKey(Category,on_delete=models.CASCADE,related_name="products")
     brand=models.ForeignKey(Brand,on_delete=models.CASCADE,related_name="b_products")
-    stock=models.SmallIntegerField(blank=True,default=0)
+    stock=models.PositiveSmallIntegerField(blank=True,default=0)
+    create=models.DateTimeField(auto_now_add=True)
+    update=models.DateTimeField(auto_now=True)
+    
+      
+    def __str__(self):
+        return self.name
